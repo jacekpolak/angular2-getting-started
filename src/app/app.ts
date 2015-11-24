@@ -35,9 +35,9 @@ var HEROES: Hero[] = [
     `,
     directives: [FORM_DIRECTIVES, NgFor],
     styles:[`
-        .heroes {list-style-type: none; margin-left: 1em; padding: 0; width: 10em;}
+        .heroes { list-style-type: none; margin-left: 1em; padding: 0; width: 10em; }
         .heroes li { cursor: pointer; position: relative; left: 0; transition: all 0.2s ease; }
-        .heroes li:hover {color: #369; background-color: #EEE; left: .2em;}
+        .heroes li:hover { color: #369; background-color: #EEE; left: .2em;}
         .heroes .badge {
             font-size: small;
             color: white;
