@@ -15,7 +15,16 @@
     "typescript": "^1.6.2"
   },
   "dependencies": {
+    "angular2": "2.0.0-alpha.44",
     "es6-shim": "^0.33.13",
     "systemjs": "0.19.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacekpolak/angular2-getting-started.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jacekpolak/angular2-getting-started/issues"
+  },
+  "homepage": "https://github.com/jacekpolak/angular2-getting-started#readme"
 }
