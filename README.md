@@ -5,7 +5,7 @@ Project that showing how Angular2 works with TypeScript based on https://angular
 
 **run watcher for TypeScript**
 
-    npm tsc
+    npm run tsc
     
 **run live reload server that will open browser and reload on save**
 

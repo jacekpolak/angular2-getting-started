@@ -1,4 +1,4 @@
-import {bootstrap, Component, FORM_DIRECTIVES, NgFor} from 'angular2/angular2';
+import {bootstrap, Component, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
 
 var HEROES: Hero[] = [
     { "id": 11, "name": "Mr. Nice"},
@@ -18,22 +18,24 @@ var HEROES: Hero[] = [
 
         <h2>My Heroes</h2>
         <ul class="heroes">
-            <li *ng-for="#hero of heroes">
+            <li *ng-for="#hero of heroes" (click)="onSelect(hero)" [ng-class]="getSelectedClass(hero)">
                 <!-- each hero goes here -->
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
         </ul>
 
-        <h2>{{hero.name}} details!</h2>
-        <div>
-            <label for="id">id: </label> {{hero.id}}
+        <div *ng-if="selectedHero">
+            <h2>{{selectedHero.name}} details!</h2>
+            <div>
+                <label for="id">id: </label> {{selectedHero.id}}
+            </div>
+            <div>
+                <label for="name">name: </label>
+                <input type="text" id="name" [(ng-model)]="selectedHero.name" placeholder="name" /> 
+            </div>
         </div>
-        <div>
-            <label for="name">name: </label>
-            <input type="text" id="name" [(ng-model)]="hero.name" placeholder="name" /> 
-        </div>  
     `,
-    directives: [FORM_DIRECTIVES, NgFor],
+    directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
     styles:[`
         .heroes { list-style-type: none; margin-left: 1em; padding: 0; width: 10em; }
         .heroes li { cursor: pointer; position: relative; left: 0; transition: all 0.2s ease; }
@@ -49,7 +51,8 @@ var HEROES: Hero[] = [
             top: -1px;
         }
         .selected { background-color: #EEE; color: #369; }
-    `],
+    `]
+    
 })
 
 class AppComponent {
@@ -59,6 +62,12 @@ class AppComponent {
         name: 'Windstorm'
     };
     public heroes = HEROES;
+    public selectedHero: Hero;
+
+    onSelect(hero: Hero) { this.selectedHero = hero; }
+    getSelectedClass(hero: Hero) {
+        return { 'selected' : hero === this.selectedHero };
+    }
 }
 
 class Hero {
